@@ -1,4 +1,10 @@
 # Speed Prediction using Optical Flow and 2D CNN
+
+# Pipeline
+
+1. Extract Images from the video, convert them to optical flow and save the optical flow images
+2. Train the network below on optical flow 
+
 # Model
 
 ![Model](output/SpeedPredictionModel.jpg)
