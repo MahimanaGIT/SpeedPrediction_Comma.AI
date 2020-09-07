@@ -7,6 +7,6 @@
 '''
 loss: 0.0939 - val_loss: 0.1837
 '''
-![Test Prediction](/output/test_predict.gif)
+![Test Prediction](/output/test.gif)
 
 ![Train Prediction](/output/train-predict.gif)
