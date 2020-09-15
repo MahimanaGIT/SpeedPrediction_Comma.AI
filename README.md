@@ -34,15 +34,14 @@ The following model is a 2D CNN based model made to be used on optical flow imag
 
 This gif below has the prediction vs ground truth for the images on which the model is trained:
 
-<p align="center">
+
 ![Train Prediction](/output/train-predict.gif)
-</p>
 
 This gif is the prediction on the test images:
 
-<p align="center">
+
 ![Test Prediction](/output/test.gif)
-</p>
+
 
 # Learning:
 1. Image augmentation significantly improves the speed estimation of the model
