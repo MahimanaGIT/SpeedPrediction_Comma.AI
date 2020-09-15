@@ -30,6 +30,19 @@ The following model is a 2D CNN based model made to be used on optical flow imag
   <img width="421" height="971" src="output/SpeedPredictionModel.jpg">
 </p>
 
+# Training:
+
+Trained the 2D CNN for 150 epochs to get a validation MSE loss of 0.18 and training MSE loss of 0.05
+
+<p align="center">
+  <img width="1421" height="149" src="output/train_loss_speed_estimation.png">
+</p>
+
+<p align="center">
+  <img width="475" height="450" src="output/train_speed_estimation.png">
+</p>
+
+
 # Output:
 
 This gif below has the prediction vs ground truth for the images on which the model is trained:
