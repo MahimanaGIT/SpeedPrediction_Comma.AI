@@ -2,6 +2,8 @@
 
 # Pipeline
 
+![Model](output/speed_recognition_pipeline.jpg)
+
 1. Extract Images from the video, convert them to optical flow and save the optical flow images
 2. Train the network below on optical flow 
 
