@@ -5,8 +5,7 @@ import tensorflow.keras as keras
 import glob
 import numpy as np
 import pathlib
-from tensorflow.keras.wrappers.scikit_learn import KerasRegressor
-from tensorflow.keras.applications.resnet50 import ResNet50
+import matplotlib.pyplot as plt
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import LSTM,Dense, Dropout
 from tensorflow.keras.layers import SpatialDropout1D
@@ -61,22 +60,17 @@ class CustomCallback(tf.keras.callbacks.Callback):
 		elif(logs.get('val_loss')<self.val_loss):
 			print("\nSaving Model for minimum validation loss\n")
 			self.val_loss=logs.get('val_loss')
-			model.save('speed_recognition.PB')
+			model.save('data/trained_model')
 
 def make_model(inputShape=(250,250)):
 	model = tf.keras.Sequential()
-	model.add(tf.keras.layers.Conv2D(filters = 16, kernel_size=(5,5), strides=(2,2), input_shape = (inputShape[1], inputShape[0], 3), kernel_initializer = 'he_normal'))
-	model.add(tf.keras.layers.Activation('elu'))
-	model.add(tf.keras.layers.Conv2D(filters = 32, kernel_size=(5,5), strides=(2,2), kernel_initializer = 'he_normal'))
-	model.add(tf.keras.layers.Activation('elu'))
-	model.add(tf.keras.layers.Conv2D(filters = 48, kernel_size=(5,5), strides=(2,2), kernel_initializer = 'he_normal'))
-	model.add(tf.keras.layers.Activation('elu'))
+	model.add(tf.keras.layers.Conv2D(filters = 16, kernel_size=(5,5), strides=(2,2), input_shape = (inputShape[1], inputShape[0], 3), activation='elu', kernel_initializer = 'he_normal'))
+	model.add(tf.keras.layers.Conv2D(filters = 32, kernel_size=(5,5), strides=(2,2), kernel_initializer = 'he_normal', activation='elu'))
+	model.add(tf.keras.layers.Conv2D(filters = 48, kernel_size=(5,5), strides=(2,2), kernel_initializer = 'he_normal', activation='elu'))
 	model.add(tf.keras.layers.Dropout(0.3))
-	model.add(tf.keras.layers.Conv2D(filters = 64, kernel_size=(3,3), strides=(1,1), kernel_initializer = 'he_normal'))
-	model.add(tf.keras.layers.Activation('elu'))
-	model.add(tf.keras.layers.Conv2D(filters = 64, kernel_size=(3,3), strides=(1,1), kernel_initializer = 'he_normal', padding = 'valid'))
+	model.add(tf.keras.layers.Conv2D(filters = 64, kernel_size=(3,3), strides=(1,1), kernel_initializer = 'he_normal', activation='elu'))
+	model.add(tf.keras.layers.Conv2D(filters = 64, kernel_size=(3,3), strides=(1,1), kernel_initializer = 'he_normal', padding = 'valid', activation='elu'))
 	model.add(tf.keras.layers.Flatten())
-	model.add(tf.keras.layers.Activation('elu'))
 	model.add(tf.keras.layers.Dense(128, kernel_initializer = 'he_normal', activation='elu'))
 	model.add(tf.keras.layers.Dense(64, kernel_initializer = 'he_normal', activation='elu'))
 	model.add(tf.keras.layers.Dense(16, kernel_initializer = 'he_normal', activation='elu'))
@@ -90,7 +84,7 @@ def make_model(inputShape=(250,250)):
 if __name__ == '__main__':
 	split=0.9
 	targetSize=(240, 320)
-	EPOCH = 50
+	EPOCH = 20
 	batch_size = 128
 
 	filenames_original = [img for img in glob.glob(PATH_TO_TRAIN_DIR + "*.jpg")]
@@ -119,8 +113,8 @@ if __name__ == '__main__':
 	early_stopping_callback =tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=5)
 	callbacks=[tensorboard_callback, early_stopping_callback, custom_callback]
 
-	model = tf.keras.models.load_model(PATH_TO_MODEL)
-	# model = make_model(inputShape=targetSize)
+	# model = tf.keras.models.load_model(PATH_TO_MODEL)
+	model = make_model(inputShape=targetSize)
 	history = model.fit(x=trainDataGen, 
 		steps_per_epoch=len(filenames_train)//batch_size, 
 		validation_data=validDataGen,
@@ -129,7 +123,20 @@ if __name__ == '__main__':
 		epochs=EPOCH,
 		callbacks=callbacks)
 
-	model.save('speed_recognition.PB')
+	loss = history.history['loss']
+	val_loss = history.history['val_loss']
+	epochs = range(len(loss))
+
+	import matplotlib.pyplot as plt
+
+	plt.plot(epochs, loss, 'r', label='Training Loss')
+	plt.plot(epochs, val_loss, 'b', label='Validation Loss')
+	plt.title('Training and Validation Loss')
+	plt.legend(loc=0)
+	plt.figure()
+
+	plt.show()
+	model.save('data/trained_model')
 
 	# TODO: 
 	# 1. Save model 
