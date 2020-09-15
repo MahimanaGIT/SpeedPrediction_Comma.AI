@@ -84,7 +84,7 @@ def make_model(inputShape=(250,250)):
 if __name__ == '__main__':
 	split=0.9
 	targetSize=(240, 320)
-	EPOCH = 20
+	EPOCH = 50
 	batch_size = 128
 
 	filenames_original = [img for img in glob.glob(PATH_TO_TRAIN_DIR + "*.jpg")]
@@ -110,7 +110,7 @@ if __name__ == '__main__':
 
 	custom_callback = CustomCallback()
 	tensorboard_callback = tf.keras.callbacks.TensorBoard(log_dir=log_dir, histogram_freq=1)
-	early_stopping_callback =tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=5)
+	early_stopping_callback =tf.keras.callbacks.EarlyStopping(monitor='val_loss', patience=7)
 	callbacks=[tensorboard_callback, early_stopping_callback, custom_callback]
 
 	# model = tf.keras.models.load_model(PATH_TO_MODEL)

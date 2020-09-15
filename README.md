@@ -6,6 +6,10 @@ This challenge was developed by Comma.AI to predict the speed of a car from a vi
 
 # Pipeline
 
+<p align="center">
+  <img width="421" height="971" src="output/SpeedPredictionModel.jpg">
+</p>
+
 ![Model](output/speed_recognition_pipeline.jpg)
 
 Tensorflow Version: 2.2.0
