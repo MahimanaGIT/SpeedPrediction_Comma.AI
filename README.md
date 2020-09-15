@@ -1,12 +1,16 @@
 # Speed Prediction using Optical Flow and 2D CNN
 
+# About the challenge: 
+[Comma.AI Speed Challenge](https://github.com/commaai/speedchallenge)
+This challenge was developed by Comma.AI to predict the speed of a car from a video.
+
 # Pipeline
 
 ![Model](output/speed_recognition_pipeline.jpg)
 
 Tensorflow Version: 2.2.0
 
-Steps for 
+Steps for implementing speed estimation:
 1. Save the images from the `train.mp4` and `test.mp4` video using `DatasetConverter.py`.
 2. Convert the images from the videos, computer dense optical flow on the image sequence and save optical flow images using `VideoToOpticalFlowImage.py`.
 3. Train the network below on optical flow images and save the best performing model using `custom callback`.
@@ -26,10 +30,14 @@ The following model is a 2D CNN based model made to be used on optical flow imag
 
 # Output:
 
-This gif below has the prediction vs ground truth for the images on which the model is trained
+This gif below has the prediction vs ground truth for the images on which the model is trained:
+
+
 ![Train Prediction](/output/train-predict.gif)
 
-This gif is the prediction on the test images
+This gif is the prediction on the test images:
+
+
 ![Test Prediction](/output/test.gif)
 
 
