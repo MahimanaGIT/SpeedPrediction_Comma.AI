@@ -35,7 +35,7 @@ The following model is a 2D CNN based model made to be used on optical flow imag
 Trained the 2D CNN for 150 epochs to get a validation MSE loss of 0.18 and training MSE loss of 0.05
 
 <p align="center">
-  <img width="500" height="149" src="output/train_loss_speed_estimation.png">
+  <img width="1000" height="149" src="output/train_loss_speed_estimation.png">
 </p>
 
 <p align="center">
