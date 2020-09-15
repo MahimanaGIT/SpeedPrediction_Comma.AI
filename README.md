@@ -6,10 +6,6 @@ This challenge was developed by Comma.AI to predict the speed of a car from a vi
 
 # Pipeline
 
-<p align="center">
-  <img width="421" height="971" src="output/SpeedPredictionModel.jpg">
-</p>
-
 ![Model](output/speed_recognition_pipeline.jpg)
 
 Tensorflow Version: 2.2.0
@@ -30,7 +26,9 @@ Every single images is flipped horizontally having the target value same as the 
 
 The following model is a 2D CNN based model made to be used on optical flow images. As compared to a 3D CNN based model trained on images from video, using optical flow with 2D CNN is faster to train and has lower MSE loss.
 
-![Model](output/SpeedPredictionModel.jpg)
+<p align="center">
+  <img width="421" height="971" src="output/SpeedPredictionModel.jpg">
+</p>
 
 # Output:
 
