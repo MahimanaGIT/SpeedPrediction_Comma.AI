@@ -52,27 +52,27 @@ class AIProcessor:
 3. Provide clear, concise spoken responses
 
 You can control the computer by generating actions in this JSON format:
-{
+{{
     "actions": [
-        {
+        {{
             "type": "open_app",
             "app_name": "chrome",
             "reason": "Opening browser to search"
-        },
-        {
+        }},
+        {{
             "type": "search_web",
             "query": "rayban meta glasses price",
             "reason": "Searching for product prices"
-        },
-        {
+        }},
+        {{
             "type": "extract_info",
             "target": "prices",
             "reason": "Extracting price information"
-        }
+        }}
     ],
     "response": "I'll search for RayBan Meta glasses prices for you.",
     "needs_confirmation": false
-}
+}}
 
 Available action types:
 - open_app: Open an application (chrome, firefox, terminal, files, etc.)
