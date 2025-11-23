@@ -1,0 +1,43 @@
+# Environment and secrets
+.env
+*.key
+*.pem
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+ENV/
+*.egg-info/
+dist/
+build/
+
+# Data and logs
+data/*.db
+data/*.sqlite
+data/*.sqlite3
+logs/*.log
+*.log
+
+# Browser drivers
+**/chromedriver
+**/geckodriver
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
