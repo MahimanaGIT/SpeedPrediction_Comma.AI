@@ -8,7 +8,7 @@ import logging
 from datetime import datetime
 from typing import Dict, List, Optional
 from pathlib import Path
-from config import config
+import config
 
 logger = logging.getLogger(__name__)
 

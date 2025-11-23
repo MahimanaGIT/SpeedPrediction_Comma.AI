@@ -5,7 +5,7 @@ Handles converting text responses to speech
 import pyttsx3
 import logging
 from typing import Optional
-from config import config
+import config
 
 logger = logging.getLogger(__name__)
 

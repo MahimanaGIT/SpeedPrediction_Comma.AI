@@ -5,7 +5,7 @@ Handles voice input and converts it to text
 import speech_recognition as sr
 import logging
 from typing import Optional
-from config import config
+import config
 
 logger = logging.getLogger(__name__)
 
